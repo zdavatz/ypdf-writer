@@ -1,3 +1,4 @@
+#encoding: ASCII-8BIT
 #--
 # PDF::Writer for Ruby.
 #   http://rubyforge.org/projects/ruby-pdf/
@@ -153,7 +154,7 @@ require 'pdf/writer/oreader'
 class PDF::Writer::External::Image < PDF::Writer::External
   attr_reader :label
   attr_reader :image_info
-
+  
   def initialize(parent, data, image, label)
     super(parent)
 

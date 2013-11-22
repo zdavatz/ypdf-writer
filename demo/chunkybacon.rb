@@ -12,6 +12,10 @@
 #
 # $Id$
 #++
+
+# support running from within Textmate
+Dir.chdir(File.dirname(__FILE__))
+
 begin
   require 'pdf/writer'
 rescue LoadError => le

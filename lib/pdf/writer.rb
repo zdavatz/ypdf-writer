@@ -1,4 +1,3 @@
-#encoding: ISO-8859-1
 #--
 # PDF::Writer for Ruby.
 #   http://rubyforge.org/projects/ruby-pdf/
@@ -707,15 +706,15 @@ class PDF::Writer
     @arc4.init(@encryption_key) unless @arc4.nil?
 
     check_all_here
-
+    
     xref = []
-
-    content = "%PDF-#{@version}\n%âãÏÓ\n"
+    
+    content = "%PDF-#{@version}\n%âãÏÓ\n".b
     pos = content.size
-
+    
     objects.each do |oo|
       begin
-        cont = oo.to_s.force_encoding("ISO-8859-1")
+        cont = oo.to_s.b
         content << cont
         xref << pos
         pos += cont.size
