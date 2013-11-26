@@ -49,18 +49,17 @@ describe PDF::Writer::Graphics do
     image_obj.image_info.format.should eql(PDF::Writer::Graphics::ImageInfo::Formats::JPEG)
     
     pdf.add_text(10, 400, "<c:alink uri=\"http://www.apple.com/\">www.apple.com</c:alink>", 12)
-    pdf.add_text(10, 370, "<b>some bold text too</b>")
+    pdf.add_text(10, 370, "<b>some bold téxt tóø with some other specîål ° characters</b>")
     
     rendered_pdf = pdf.render
     rendered_pdf.should_not be_nil
     
-    # look at pdf
-    # Dir.mkdir('tmp') unless File.directory?('tmp')
-    # pdf_path = 'tmp/test_pdf_linked_text_images.pdf'
-    # File.unlink(pdf_path) if File.file?(pdf_path)
-    # pdf.save_as(pdf_path)
-    # `open #{pdf_path}`
-    
+    # look at this pdf
+    Dir.mkdir('tmp') unless File.directory?('tmp')
+    pdf_path = 'tmp/test_pdf_linked_text_images.pdf'
+    File.unlink(pdf_path) if File.file?(pdf_path)
+    pdf.save_as(pdf_path)
+    `open #{pdf_path}`
   end
   
   

@@ -783,7 +783,7 @@ class PDF::Writer
 
   def load_font(font, encoding = nil)
     metrics = load_font_metrics(font)
-
+    
     name  = File.basename(font).gsub(/\.afm$/o, "")
 
     encoding_diff = nil
@@ -1385,6 +1385,22 @@ class PDF::Writer
     select_font("Helvetica") if @fonts.empty?
     
     text = text.to_s
+    
+    # address font/character encoding
+    case @fonts[@current_base_font].encoding
+    when 'WinAnsiEncoding' then 
+      text_encoder = Encoding::Windows_1252
+    when 'MacRomanEncoding' then
+      text_encoder = Encoding::MacRoman
+    else
+      text_encoder = nil
+    end
+    
+    unless text_encoder.nil?
+      # attempt to encode the text to the font's encoding
+      # if it fails, just use the text as-is
+      text = text.encode(text_encoder) rescue text
+    end
     
       # If there are any open callbacks, then they should be called, to show
       # the start of the line

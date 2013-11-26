@@ -7,6 +7,7 @@
     o Fixed problem using add_text with embedded links when not using encryption.
     o Changed Mutex marshalling monkeypatch to actually dump and return a new mutex.
 	  This is required for Transaction::Simple support, which is used in SimpleTable.
+	o The add_text method now tries to handle character encodings.
     o Added some tests.
 
 == PDF::Writer 1.3.0: August 16, 2013
