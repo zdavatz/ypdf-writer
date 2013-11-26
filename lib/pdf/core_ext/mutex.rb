@@ -1,11 +1,12 @@
 
 unless RUBY_VERSION < '1.9'
   class ::Mutex
-    def marshal_dump
-    end unless method_defined?(:marshal_dump)
-    def marshal_load(data)
-    end unless method_defined?(:marshal_load)
+    def _dump(level)
+      return ""
+    end unless method_defined?(:_dump)
+    def self._load(data)
+      return new
+    end unless method_defined?(:_load)
   end
 end
-
 

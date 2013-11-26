@@ -11,6 +11,10 @@
 require 'pdf/writer'
 require 'transaction/simple/group'
 
+# need to extend mutex to support being marshalled for Transaction::Simple
+require 'pdf/core_ext/mutex'
+
+
   # This class will create tables with a relatively simple API and internal
   # implementation.
 class PDF::SimpleTable
