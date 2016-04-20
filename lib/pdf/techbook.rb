@@ -534,7 +534,7 @@ class PDF::TechBook < PDF::Writer
 
     __build_xref_table(document)
 
-    document.each_line do |line|
+    document.each do |line|
     begin
       progress.inc if progress
       @techbook_line__ += 1
@@ -875,7 +875,9 @@ class PDF::TechBook < PDF::Writer
     pdf.compressed = config.compressed
     pdf.techbook_source_dir = File.expand_path(dirn)
 
-    document = open(files[:document]) { |io| io.read.split($/) }
+    document = open(files[:document]) do |io|
+      io.read.encode!('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '').split($/)
+    end
     progress = ProgressBar.new(base.capitalize, document.size)
     pdf.techbook_parse(document, progress)
     progress.finish
