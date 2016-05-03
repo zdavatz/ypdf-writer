@@ -1,5 +1,10 @@
 = PDF::Writer Change Log
 
+== PDF::Writer 1.3.2: Not yet release
+* More Ruby 2.3 compatibility:
+    o Use bundler/gem_tasks to create the gem
+    o Only for internal ywesee usage
+
 == PDF::Writer 1.3.1: November 26, 2013
 * More Ruby 2.0 compatibility:
     o Changed encodings from ISO-8859-1 to ASCII-8BIT for binary strings.

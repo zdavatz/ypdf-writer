@@ -1,2 +1,8 @@
 tmp/
+pkg/
+manual.pdf
+manual._mc
+*.patch
+.ruby-version
+
 
