@@ -11,11 +11,13 @@ gem 'color'
 #gem "sbsm"
 #gem 'deprecated', '= 2.0.1'
 gem 'transaction-simple'
-group :debugger do
+group :test do
   gem "flexmock"
   gem "test-unit"
   gem "rake"
   gem "rspec"
+end
+group :debugger do
         if RUBY_VERSION.match(/^1/)
                 gem 'pry-debugger'
         else
