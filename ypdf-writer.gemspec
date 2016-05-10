@@ -6,10 +6,10 @@ Gem::Specification.new do |s|
   s.name     = "ypdf-writer"
   s.version  = PDF::Writer::VERSION
   s.date     = "2009-05-19"
-  s.summary  = "A pure Ruby PDF document creation library."
-  s.email    = "ken@metaskills.net"
-  s.homepage = "http://github.com/metaskills/pdf-writer/"
-  s.description = "A pure Ruby PDF document creation library."
+  s.summary  = "A pure Ruby PDF document creation library. (Forked by ywesee.com to support Ruby 2.x)"
+  s.email    = "zdavatz@ywesee.com"
+  s.homepage = "https://github.com/zdavatz/ypdf-writer"
+  s.description = "Based on http://github.com/metaskills/pdf-writer/. A pure Ruby PDF document creation library."
   s.has_rdoc = true
   s.authors  = ["Austin Ziegler","Ken Collins"]
   s.autorequire       = ["pdf/writer"]
