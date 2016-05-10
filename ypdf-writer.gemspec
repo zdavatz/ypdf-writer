@@ -1,6 +1,10 @@
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'pdf/version'
+
 Gem::Specification.new do |s|
-  s.name     = "pdf-writer"
-  s.version  = "1.2.3"
+  s.name     = "ypdf-writer"
+  s.version  = PDF::Writer::VERSION
   s.date     = "2009-05-19"
   s.summary  = "A pure Ruby PDF document creation library."
   s.email    = "ken@metaskills.net"
@@ -15,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency('color', '>= 1.4.0')
   s.add_dependency('transaction-simple', '~> 1.3')             
   s.files = [
-    "README",
+    "readme.md",
     "LICENCE",
     "ChangeLog",
     "bin/techbook",
@@ -103,6 +107,6 @@ Gem::Specification.new do |s|
     "demo/qr-library.rb",
     "manual.pwd"
   ]
-  s.rdoc_options = ["--title", "PDF::Writer", "--main", "README", "--line-numbers"]
-  s.extra_rdoc_files = ["README", "ChangeLog", "LICENCE"]
+  s.rdoc_options = ["--title", "PDF::Writer", "--main", "readme.md", "--line-numbers"]
+  s.extra_rdoc_files = ["readme.md", "ChangeLog", "LICENCE"]
 end

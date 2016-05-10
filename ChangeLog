@@ -1,6 +1,6 @@
 = PDF::Writer Change Log
 
-== PDF::Writer 1.3.2: Not yet release
+== PDF::Writer 1.3.2: May 10, 2016
 * More Ruby 2.3 compatibility:
     o Use bundler/gem_tasks to create the gem
     o Only for internal ywesee usage
