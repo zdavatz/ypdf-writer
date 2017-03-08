@@ -54,11 +54,11 @@ require 'pdf/writer/oreader'
 #                     image.
 # Intent::            (name, Optional; PDF 1.1) The name of a color
 #                     rendering intent to be used in rendering the image
-#                     (see “Rendering Intents” on page 230). Default value:
+#                     (see "Rendering Intents" on page 230). Default value:
 #                     the current rendering intent in the graphics state.
 # ImageMask::         (boolean, Optional) A flag indicating whether the
 #                     image is to be treated as an image mask (see Section
-#                     4.8.5, “Masked Images”). If this flag is true, the
+#                     4.8.5, "Masked Images"). If this flag is true, the
 #                     value of /BitsPerComponent must be 1 and Mask and
 #                     /ColorSpace should not be specified; unmasked areas
 #                     are painted using the current nonstroking color.
@@ -66,86 +66,86 @@ require 'pdf/writer/oreader'
 # Mask::              (stream or array, Optional except for image masks; not
 #                     allowed for image masks; PDF 1.3) An image XObject
 #                     defining an image mask to be applied to this image
-#                     (see “Explicit Masking” on page 321), or an array
+#                     (see "Explicit Masking" on page 321), or an array
 #                     specifying a range of colors to be applied to it as a
-#                     color key mask (see “Color Key Masking” on page 321).
+#                     color key mask (see "Color Key Masking" on page 321).
 #                     If ImageMask is true, this entry must not be present.
 #                     (See implementation note 51 in Appendix H.)
 # Decode::            (array, Optional) An array of numbers describing how
 #                     to map image samples into the range of values
-#                     appropriate for the image’s color space (see “Decode
-#                     Arrays” on page 314). If ImageMask is true, the array
+#                     appropriate for the image's color space (see "Decode
+#                     Arrays" on page 314). If ImageMask is true, the array
 #                     must be either [0 1] or [1 0]; otherwise, its length
 #                     must be twice the number of color components required
 #                     by ColorSpace. If the image uses the JPXDecode filter
 #                     and ImageMask is false, Decode is ignored. Default
-#                     value: see “Decode Arrays” on page 314.
+#                     value: see "Decode Arrays" on page 314.
 # Interpolate::       (boolean, Optional) A flag indicating whether image
-#                     interpolation is to be performed (see “Image
-#                     Interpolation” on page 316). Default value: false.
+#                     interpolation is to be performed (see "Image
+#                     Interpolation" on page 316). Default value: false.
 # Alternates::        (array, Optional; PDF 1.3) An array of alternate image
-#                     dictionaries for this image (see “Alternate Images” on
+#                     dictionaries for this image (see "Alternate Images" on
 #                     page 317). The order of elements within the array has
 #                     no significance. This entry may not be present in an
 #                     image XObject that is itself an alternate image.
 # SMask::             (stream, Optional; PDF 1.4) A subsidiary image XObject
-#                     defining a soft-mask image (see “Soft-Mask Images” on
+#                     defining a soft-mask image (see "Soft-Mask Images" on
 #                     page 522) to be used as a source of mask shape or mask
 #                     opacity values in the transparent imaging model. The
 #                     alpha source parameter in the graphics state
 #                     determines whether the mask values are interpreted as
 #                     shape or opacity. If present, this entry overrides the
 #                     current soft mask in the graphics state, as well as
-#                     the image’s Mask entry, if any. (However, the other
-#                     transparency related graphics state parameters—blend
-#                     mode and alpha constant—remain in effect.) If SMask is
+#                     the image's Mask entry, if any. (However, the other
+#                     transparency related graphics state parameters-blend
+#                     mode and alpha constant-remain in effect.) If SMask is
 #                     absent, the image has no associated soft mask
 #                     (although the current soft mask in the graphics state
 #                     may still apply).
 # SMaskInData::       (integer, Optional for images that use the JPXDecode
 #                     filter, meaningless otherwise; PDF 1.5) A code
-#                     specifying how soft-mask information (see “Soft-Mask
-#                     Images” on page 522) encoded with image samples should
+#                     specifying how soft-mask information (see "Soft-Mask
+#                     Images" on page 522) encoded with image samples should
 #                     be used: (0) If present, encoded soft-mask image
-#                     information should be ignored. (1) The image’s data
+#                     information should be ignored. (1) The image's data
 #                     stream includes encoded soft-mask values. An
 #                     application can create a soft-mask image from the
 #                     information to be used as a source of mask shape or
 #                     mask opacity in the transparency imaging model. (2)
-#                     The image’s data stream includes color channels that
+#                     The image's data stream includes color channels that
 #                     have been preblended with a background; the image data
 #                     also includes an opacity channel. An application can
 #                     create a soft-mask image with a Matte entry from the
 #                     opacity channel information to be used as a source of
 #                     mask shape or mask opacity in the transparency model.
 #                     * If this entry has a nonzero value, SMask should not
-#                     be specified. See also Section 3.3.8, “JPXDecode
-#                     Filter.” Default value: 0.
+#                     be specified. See also Section 3.3.8, "JPXDecode
+#                     Filter." Default value: 0.
 # Name::              (name, Required in PDF 1.0; optional otherwise) The
 #                     name by which this image XObject is referenced in the
 #                     XObject subdictionary of the current resource
-#                     dictionary (see Section 3.7.2, “Resource
-#                     Dictionaries”). Note: This entry is obsolescent and
+#                     dictionary (see Section 3.7.2, "Resource
+#                     Dictionaries"). Note: This entry is obsolescent and
 #                     its use is no longer recommended. (See implementation
 #                     note 52 in Appendix H.)
 # StructParent::      (integer, Required if the image is a structural
-#                     content item; PDF 1.3) The integer key of the image’s
-#                     entry in the structural parent tree (see “Finding
-#                     Structure Elements from Content Items” on page 797).
+#                     content item; PDF 1.3) The integer key of the image's
+#                     entry in the structural parent tree (see "Finding
+#                     Structure Elements from Content Items" on page 797).
 # ID::                (string, Optional; PDF 1.3; indirect reference
-#                     preferred) The digital identifier of the image’s
+#                     preferred) The digital identifier of the image's
 #                     parent Web Capture content set (see Section 10.9.5,
-#                     “Object Attributes Related to Web Capture”).
+#                     "Object Attributes Related to Web Capture").
 # OPI::               (dictionary, Optional; PDF 1.2) An OPI version
-#                     dictionary for the image (see Section 10.10.6, “Open
-#                     Prepress Interface (OPI)”). If ImageMask is true, this
+#                     dictionary for the image (see Section 10.10.6, "Open
+#                     Prepress Interface (OPI)"). If ImageMask is true, this
 #                     entry is ignored.
 # Metadata::          (stream, Optional; PDF 1.4) A metadata stream
 #                     containing metadata for the image (see Section 10.2.2,
-#                     “Metadata Streams”).
+#                     "Metadata Streams").
 # OC::                (dictionary, Optional; PDF 1.5) An optional content
 #                     group or optional content membership dictionary (see
-#                     Section 4.10, “Optional Content”), specifying the
+#                     Section 4.10, "Optional Content"), specifying the
 #                     optional content properties for this image XObject.
 #                     Before the image is processed, its visibility is
 #                     determined based on this entry. If it is determined to

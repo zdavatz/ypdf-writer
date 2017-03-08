@@ -5,6 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'pdf/version'
 require "bundler/gem_tasks"
 require 'rspec/core/rake_task'
+require 'rake/testtask'
 
 RSpec::Core::RakeTask.new(:spec)
 
@@ -16,6 +17,7 @@ task :gem => :build do
 end
 
 task :spec => :clean
+task :default => [:clobber, :clean, :gem]
 
 require 'rake/clean'
 CLEAN.include FileList['pkg/*.gem']
