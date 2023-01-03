@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem "bundler"
+gem "rexml"
+gem "rmagick"
 gem "hpricot"
 gem 'color'
 #gem "mail"
