@@ -64,7 +64,7 @@ class PDF::Writer::FontMetrics
         # Attempt to unmarshal an .afm.rfm file first. If it is loaded,
         # we're in good shape.
       begin
-        if File.exists?(rfm_file)
+        if File.exist?(rfm_file)
           data = File.open(rfm_file, "rb") { |file| file.read }
           font = Marshal.load(data)
           return font
