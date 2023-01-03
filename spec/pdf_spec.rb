@@ -59,7 +59,10 @@ describe PDF::Writer::Graphics do
     pdf_path = 'tmp/test_pdf_linked_text_images.pdf'
     File.unlink(pdf_path) if File.file?(pdf_path)
     pdf.save_as(pdf_path)
-    `open #{pdf_path}`
+    result = `pdfinfo #{pdf_path}`
+    puts "Result of pdfinfo #{pdf_path} ist #{result}" if $VERBOSE
+    result.should match /Suspects:\s+no/
+    result.should match /PDF version:\s+1.3/
   end
   
   

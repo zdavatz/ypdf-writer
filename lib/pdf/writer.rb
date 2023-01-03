@@ -772,9 +772,9 @@ class PDF::Writer
 
   def font_file(fontfile)
     path = "#{fontfile}.pfb"
-    return path if File.exists?(path)
+    return path if File.exist?(path)
     path = "#{fontfile}.ttf"
-    return path if File.exists?(path)
+    return path if File.exist?(path)
     nil
   end
   private :font_file

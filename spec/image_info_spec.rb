@@ -44,7 +44,7 @@ describe PDF::Writer::Graphics::ImageInfo do
     
     require 'rmagick'
     img = Magick::Image::read(img_path).first
-    image_info = PDF::Writer::Graphics::ImageInfo.new(img.to_blob { self.format = 'JPG' })
+    image_info = PDF::Writer::Graphics::ImageInfo.new(img.to_blob { self.format 'JPG' })
     image_info.should_not be_nil
     
     image_info.format.should eql(PDF::Writer::Graphics::ImageInfo::Formats::JPEG)

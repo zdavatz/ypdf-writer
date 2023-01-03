@@ -16,8 +16,20 @@ Gem::Specification.new do |s|
   s.require_paths     = ["lib"]
   s.bindir            = "bin"
   s.executables       = ["techbook"]
+
+  s.add_dependency('rexml')
+  s.add_dependency('rmagick')
+  s.add_dependency('hpricot')
   s.add_dependency('color', '>= 1.4.0')
-  s.add_dependency('transaction-simple', '~> 1.3')             
+  s.add_dependency('transaction-simple', '~> 1.3')
+  s.add_development_dependency "bundler"
+  s.add_development_dependency "flexmock"
+  s.add_development_dependency "test-unit"
+  s.add_development_dependency "rake"
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "pry-byebug"
+  s.add_development_dependency "pry-doc"
+
   s.files = [
     "readme.md",
     "LICENCE",
